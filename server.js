@@ -17,3 +17,15 @@ app.use(logError);
 function logError(err, req, res){
   console.error(pageErr);
 }
+
+app.get('/about.html', function createError(err, req,
+    res, next) {
+  // var err = new Error('stop doing that');
+  err.status = 404;
+  next(err);
+});
+//
+app.use(function (err, req, res, next) {
+  console.log(err);
+  next(err);
+});
